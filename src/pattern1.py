@@ -12,13 +12,13 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-class StarBuzzCafeOrders:
-    """ A class to represent orders at our new enterprise StarBuzz Cafe.
+class StarBuzzCoffeeOrders:
+    """ A class to represent orders at our new enterprise StarBuzz Coffee.
 
     This order queue class needs to work with standard python operations:
-    - To get total queue length ==> len(StarBuzzCafeOrders)
-    - To get through all orders ==> for order in StarBuzzCafeOrders: 
-    - To get an order at random ==> StarBuzzCafeOrders[idx]
+    - To get total queue length ==> len(StarBuzzCoffeeOrders)
+    - To get through all orders ==> for order in StarBuzzCoffeeOrders: 
+    - To get an order at random ==> StarBuzzCoffeeOrders[idx]
     """
 
     def __init__(self):
@@ -50,13 +50,13 @@ class StarBuzzCafeOrders:
         # TODO write your solution here
         pass
     
-class StarBuzzCafeOrdersIterator:
-    """ A class that is an iterator for StarBuzzCafeOrders.
+class StarBuzzCoffeeOrdersIterator:
+    """ A class that is an iterator for StarBuzzCoffeeOrders.
 
     This class is required for pattern 1 - exercise B
     """
 
-    def __init__(self, order_queue: StarBuzzCafeOrders):
+    def __init__(self, order_queue: StarBuzzCoffeeOrders):
         self.idx = 0
         self.order_queue = order_queue
     

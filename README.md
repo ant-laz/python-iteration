@@ -118,6 +118,8 @@ methods to perform basic object operations, often triggered by special syntax. T
 
  * Another example of a "special" methosd is ```__getitem__(key)``` which is called by the Python interpreter when evaluating code ```obj[key]```.
 
+ * Another example of a "special" methosd is ```__repr__()``` which is called by the Python interpreter when evaluating code ```str(obj)```.
+
 Ok, so back to our error then. As per the offical Python glossary an [iterable](https://docs.python.org/3/glossary.html#term-iterable) is a "an object capable of returning its members one at a time". 
 
 So the built-in numeric type ```int``` does not have this property, it is not capable of
@@ -164,7 +166,7 @@ Let's get some practice with these new ideas with the following exercises.
 Run the unit-test for this exercise.
 
 ```shell
-python -m unittest test.test_pattern1.TestStarBuzzCafeOrders.test_ordering_a_coffee
+python -m unittest test.test_pattern1.TestStarBuzzCoffeeOrders.test_ordering_a_coffee
 ```
 
 You will get an error like: 
@@ -188,7 +190,7 @@ Using the theory above, modify pattern1.py to make the test pass.
 Run the unit-test for this exercise.
 
 ```shell
-python -m unittest test.test_pattern1.TestStarBuzzCafeOrders.test_looping_through_all_orders
+python -m unittest test.test_pattern1.TestStarBuzzCoffeeOrders.test_looping_through_all_orders
 ```
 You will get an error like: 
 ```shell
@@ -211,7 +213,7 @@ Using the theory above, modify pattern1.py to make the test pass.
 Run the unit-test for this exercise.
 
 ```shell
-python -m unittest test.test_pattern1.TestStarBuzzCafeOrders.test_checking_order_queue_at_idx
+python -m unittest test.test_pattern1.TestStarBuzzCoffeeOrders.test_checking_order_queue_at_idx
 ```
 
 You will get an error like: 
@@ -241,12 +243,67 @@ for i, x in enumerate(y):
 
 ### pattern 2 - theory
 
-todo
+So, what's going on here ? 
+
+As per the docs, Python has a number of [built-in functions](https://docs.python.org/3/library/functions.html)
+
+And one of those functions is [enumerate](https://docs.python.org/3/library/functions.html#enumerate)
+
+As per the docs, enumerate takes as input an "iterable (which) must be a sequence, 
+an iterator, or some other object which supports iteration."
+
+From pattern 1 & its exercises, we know what an iterable is & what an iterator is too.
+
+Go through the exercises below to get some experience with ```enumerate```.
 
 
 ### pattern 2 - exercise A
 
-todo
+Run the unit-test for this exercise.
+
+```shell
+python -m unittest test.test_pattern2.TestStarBuzzCoffeeDisplay.test_display_all_orders
+```
+
+You will get an error like: 
+```shell
+======================================================================
+ERROR: test_display_all_orders (test.test_pattern2.TestStarBuzzCoffeeDisplay)
+Customers need to know their place in the queue at StarBuzz Coffee !
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "../python-iteration/test/test_pattern2.py", line 34, in test_display_all_orders
+    actual_display_info = str(cafe_display)
+TypeError: __str__ returned non-string (type NoneType)
+
+----------------------------------------------------------------------
+```
+
+Using the theory above, modify pattern1.py to make the test pass.
+
+### pattern 2 - exercise B
+
+Run the unit-test for this exercise.
+
+```shell
+python -m unittest test.test_pattern2.TestStarBuzzCoffeeDisplay.test_hiding_initial_test_orders
+```
+
+You will get an error like: 
+```shell
+======================================================================
+ERROR: test_hiding_initial_test_orders (test.test_pattern2.TestStarBuzzCoffeeDisplay)
+Hide the 2 coffees the baristas have before opening time !
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "../python-iteration/test/test_pattern2.py", line 54, in test_hiding_initial_test_orders
+    actual_display_info = str(cafe_display)
+TypeError: __str__ returned non-string (type NoneType)
+
+----------------------------------------------------------------------
+```
+
+Using the theory above, modify pattern1.py to make the test pass.
 
 ## pattern 3
 

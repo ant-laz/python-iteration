@@ -14,18 +14,18 @@
 
 import unittest
 
-from src.pattern1 import StarBuzzCafeOrders
+from src.pattern1 import StarBuzzCoffeeOrders
 
-class TestStarBuzzCafeOrders(unittest.TestCase):
+class TestStarBuzzCoffeeOrders(unittest.TestCase):
 
     # pattern 1 - exercise A
     def test_ordering_a_coffee(self):
-        """Your new start-up StarBuzz Cafe needs to take orders! 
+        """Your new start-up StarBuzz Coffee needs to take orders! 
         
         This test covers ordering a latte and checking that
         the order made it into the order queue.
         """
-        cafe_orders = StarBuzzCafeOrders()
+        cafe_orders = StarBuzzCoffeeOrders()
         cafe_orders.new_order("latte")
         expected_num_orders = 1
         actual_num_orders: int = len(cafe_orders)
@@ -35,12 +35,12 @@ class TestStarBuzzCafeOrders(unittest.TestCase):
     def test_looping_through_all_orders(self):
         """You need to loop through all orders.
 
-        You hired a second barista at StarBuzz Cafe.
+        You hired a second barista at StarBuzz Coffee.
         With two baristas you can really whip through orders.
         Check that you can loop throgh all orders in the queue.
         Check for quality too, those lattes need to be perfect.
         """
-        cafe_orders = StarBuzzCafeOrders()
+        cafe_orders = StarBuzzCoffeeOrders()
         cafe_orders.new_order("latte")
         cafe_orders.new_order("cappuccino")
         cafe_orders.new_order("americano")
@@ -55,12 +55,12 @@ class TestStarBuzzCafeOrders(unittest.TestCase):
     def test_checking_order_queue_at_idx(self):
         """Your baristra needs to checks orders at random.
 
-        You hired a new barista at StarBuzz Cafe. 
+        You hired a new barista at StarBuzz Coffee. 
         The barista needs to check the order queue randomly.
         Sometimes a customers need to jump the queue. 
         Sometimes a customers forgot what they ordered.
         """
-        cafe_orders = StarBuzzCafeOrders()
+        cafe_orders = StarBuzzCoffeeOrders()
         cafe_orders.new_order("latte")
         cafe_orders.new_order("cappuccino")
         expected_order_retreived = "latte"

@@ -12,6 +12,45 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+class StarBuzzCoffeeDisplay:
+    """A class to represent the large computer screen showing customers the order queue.
+
+    The StarBuzz Coffee shop has a large computer screen so customers can determine
+    where in the queue their order is. 
+    The driver of the computer screen is very basic. 
+    The driver will use standard python operations to get info:
+    - To get the entire queue ==> str(StarBuzzCoffeeDisplay)
+    """
+
+    def __init__(self, StarBuzzCoffeeOrders, num_staff_morning_coffees=0):
+      self.order_queue = StarBuzzCoffeeOrders
+      self.num_staff_morning_coffees = num_staff_morning_coffees
+
+    # pattern 2 - exercise A
+    def get_all_orders_in_queue(self):
+        display_info = ""
+        for idx, order in enumerate(self.order_queue):
+            display_info += f"({idx}, '{order}')"
+        return display_info
+
+    # pattern 2 - exercise B
+    def get_all_orders_excluding_tests(self):
+        display_info = ""
+        for idx, order in enumerate(self.order_queue, -1*self.num_staff_morning_coffees):
+            if idx >= 0:
+              display_info += f"({idx}, '{order}')"
+        return display_info
+    
+    def __repr__(self) -> str:
+        pass
+        
+        # pattern 2 - exercise A
+        # return self.get_all_orders_in_queue()
+
+        # pattern 2 - exercise B
+        return self.get_all_orders_excluding_tests()
+        
+
 class StarBuzzCoffeeOrders:
     """ A class to represent orders at our new enterprise StarBuzz Coffee.
 
