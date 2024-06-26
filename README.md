@@ -279,7 +279,7 @@ TypeError: __str__ returned non-string (type NoneType)
 ----------------------------------------------------------------------
 ```
 
-Using the theory above, modify pattern1.py to make the test pass.
+Using the theory above, modify pattern2.py to make the test pass.
 
 ### pattern 2 - exercise B
 
@@ -303,7 +303,7 @@ TypeError: __str__ returned non-string (type NoneType)
 ----------------------------------------------------------------------
 ```
 
-Using the theory above, modify pattern1.py to make the test pass.
+Using the theory above, modify pattern2.py to make the test pass.
 
 ## pattern 3
 
@@ -316,11 +316,81 @@ for key, value in d.items():
 
 ### pattern 3 - theory
 
-todo
+So what's going on here then ? 
+
+Can ```d``` by any type ? What about a ```list``` ? 
+
+```shell
+l = [1,2,3]
+for key, value in l.items():
+  print(key)
+  print(value)
+```
+
+No! We get an error
+
+```shell
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'items'
+```
+
+It turns out that ```d``` can only be a ```dict```. ```dict.items()``` is called a 
+"dictionary view". 
+
+As per the docs for [dict.items()](https://docs.python.org/3/library/stdtypes.html#dict.items)
+this method returns a [view object](https://docs.python.org/3/library/stdtypes.html#dict-views)
+which gives the items in the dict as ```(key,value)``` pairs.
+
+Let's get some practice with ```dict.items()``` with the following exercises.
 
 ### pattern 3 - exercise A
 
-todo
+Run the unit-test for this exercise.
+
+```shell
+python -m unittest test.test_pattern3.TestStarBuzzInventory.test_full_inventory_report
+```
+
+You will get an error like: 
+```shell
+======================================================================
+ERROR: test_full_inventory_report (test.test_pattern3.TestStarBuzzInventory)
+The manager needs to know everything in the inventory !
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "../python-iteration/test/test_pattern3.py", line 33, in test_full_inventory_report
+    actual_inventory_report = str(cafe_inventory)
+TypeError: __str__ returned non-string (type NoneType)
+
+----------------------------------------------------------------------
+```
+
+Using the theory above, modify pattern3.py to make the test pass.
+
+### pattern 3 - exercise B
+
+Run the unit-test for this exercise.
+
+```shell
+python -m unittest test.test_pattern3.TestStarBuzzInventory.test_out_of_stock_inventory_report
+```
+
+You will get an error like: 
+```shell
+======================================================================
+FAIL: test_out_of_stock_inventory_report (test.test_pattern3.TestStarBuzzInventory)
+The manager needs to know what out of stock items to re-order !
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "../python-iteration/test/test_pattern3.py", line 51, in test_out_of_stock_inventory_report
+    self.assertEqual(expected_inventory_report, actual_inventory_report)
+AssertionError: 'cream' != None
+
+----------------------------------------------------------------------
+```
+
+Using the theory above, modify pattern3.py to make the test pass.
 
 ## pattern 4
 
