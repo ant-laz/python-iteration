@@ -342,6 +342,14 @@ As per the docs for [dict.items()](https://docs.python.org/3/library/stdtypes.ht
 this method returns a [view object](https://docs.python.org/3/library/stdtypes.html#dict-views)
 which gives the items in the dict as ```(key,value)``` pairs.
 
+So how can view objects be used in the ```for x in y``` pattern ? As per the docs, 
+"Dictionary views can be iterated over to yield their respective data". Furthermore, 
+these dictionary views have an ```iter(dictview)``` method which return an ```iterator.```
+From the previous section, we learnt that this is what is required to be an ```iterable```
+and to be used in the ```for x in y``` pattern. This is how dictionary view objects, 
+like ```dict.items```, ```dict.keys``` and ```dict.values``` are all ```iterable```
+and can be used in the ```for x in y``` pattern of iteration. 
+
 Let's get some practice with ```dict.items()``` with the following exercises.
 
 ### pattern 3 - exercise A
@@ -403,11 +411,70 @@ for x in range(y):
 
 ### pattern 4 - theory
 
-todo
+Ok, so what's going on here then ? 
+
+```range``` is on the Python [built-in methods](https://docs.python.org/3/library/functions.html). 
+
+As per the more detailed documentation on [ranges](https://docs.python.org/3/library/stdtypes.html#typesseq-range) we understand that ```range``` generates an "immutable sequence 
+of numbers.
+
+Amazing, right ? 
+
+But, how does this ```range``` method work with the ```for x in y``` pattern ? 
+
+Recall that all ```sequence``` types are [iterable](https://docs.python.org/3/glossary.html#term-iterable)
+and so all ```sequence``` types, like those returned by ```range``` work with the 
+```for x in y``` pattern.
+
+Let's get some practices with iteration using ```range``` in the exercises below.
 
 ### pattern 4 - exercise A
 
-todo
+Run the unit-test for this exercise.
+
+```shell
+python -m unittest test.test_pattern4.TestStarBuzzCoffeeBilling.test_total_revenue_report
+```
+
+You will get an error like: 
+```shell
+======================================================================
+FAIL: test_total_revenue_report (test.test_pattern4.TestStarBuzzCoffeeBilling)
+Your new start-up StarBuzz Coffee needs to report on all transactions!
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "../python-iteration/test/test_pattern4.py", line 34, in test_total_revenue_report
+    self.assertEqual(expected_total_revenue, actual_total_revenue)
+AssertionError: 3 != None
+
+----------------------------------------------------------------------
+```
+
+Using the theory above, modify pattern4.py to make the test pass.
+
+### pattern 4 - exercise B
+
+Run the unit-test for this exercise.
+
+```shell
+python -m unittest test.test_pattern4.TestStarBuzzCoffeeBilling.test_vip_program_promotion
+```
+
+You will get an error like: 
+```shell
+======================================================================
+FAIL: test_vip_program_promotion (test.test_pattern4.TestStarBuzzCoffeeBilling)
+A new promotion invites all odd numbered customers to a new VIP program!
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "../python-iteration/test/test_pattern4.py", line 57, in test_vip_program_promotion
+    self.assertEqual(expected_vip_invitee_list, actual_vip_invitee_list)
+AssertionError: '(555)(988)' != None
+
+----------------------------------------------------------------------
+```
+
+Using the theory above, modify pattern4.py to make the test pass.
 
 ## pattern 5
 
