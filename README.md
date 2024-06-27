@@ -487,12 +487,48 @@ for x, y in zip(a, b):
 
 ### pattern 5 - theory
 
-todo
+So what's going on here? 
+
+As per the docs, ```zip``` is a Python [built-in function](https://docs.python.org/3/library/functions.html)
+
+As per the [zip docs](https://docs.python.org/3/library/functions.html#zip) : 
+
+ * "```zip``` Iterates over several iterables in parallel, producing tuples with an item from each one."
+ * "```zip``` returns an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument iterables." 
+
+ Having completed the above exercises we should understand some of the terms mentioned 
+ here. We can pass as input to ```zip``` iterables such as ```list``` and ```str```.
+
+ Because ```zip``` returns an iterator we can use it in the ```for x in y``` pattern.
+
+ Let's get some practice with ```zip``` through the exercises below.
 
 
 ### pattern 5 - exercise A
 
-todo
+Run the unit-test for this exercise.
+
+```shell
+python -m unittest test.test_pattern5.TestStarBuzzDisplayCoffeeAndFood.test_display_all_orders
+```
+
+You will get an error like: 
+```shell
+======================================================================
+ERROR: test_display_all_orders (test.test_pattern5.TestStarBuzzDisplayCoffeeAndFood)
+Customers need to see both their food & coffee orders on the big screen!
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "../python-iteration/test/test_pattern5.py", line 33, in test_display_all_orders
+    actual_display_info = str(cafe_display)
+  File "../python-iteration/src/pattern5.py", line 37, in __repr__
+    return str(self.order_system)
+TypeError: __str__ returned non-string (type NoneType)
+
+----------------------------------------------------------------------
+```
+
+Using the theory above, modify pattern5.py to make the test pass.
 
 
 
