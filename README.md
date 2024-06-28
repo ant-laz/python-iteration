@@ -155,9 +155,35 @@ implements the [iterator protocol](https://docs.python.org/3/library/stdtypes.ht
 
 This protocol is comprised of dunder methods : ```__iter__()``` and ```__next__()```.
 
- * ```__iter__()``` - return the iterator object itself, for details see [docs](https://docs.python.org/3/library/stdtypes.html#typeiter)
+ * ```__iter__()``` - return the iterator object itself, for details see [docs](https://docs.python.org/3/library/stdtypes.html#typeiter). Note that iterators needs to return an iterator so that iterators are iterable & usable in for loops. Confused ? See the worked example below.
 
  * ```__next__()``` - return next item or an exception if none remain, for details see [docs](https://docs.python.org/3/library/stdtypes.html#typeiter)
+
+Let's use this new knowledge to understand our list example:
+
+```py
+my_int_list = [1,2,3]
+for digit in my_int_list:
+    print(digit)
+```
+
+Can be rewritten using our new knowledge of iterable & iterators.
+```py
+my_int_list = [1,2,3]
+
+numbers_iterator = my_int_list.__iter__()
+
+while True:
+  try:
+    print(numbers_iterator.__next__())
+  except StopIteration: 
+    break
+```
+
+Which one would you like to be writing everyday? 
+
+Thank goodness we have the for statement, right ? 
+
 
 Let's get some practice with these new ideas with the following exercises.
 
